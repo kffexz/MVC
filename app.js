@@ -14,5 +14,5 @@ app.get('/api/clientes', clienteController.getAllClients); // Rota para obter to
 app.post('/api/clientes', clienteController.createNewClient); //Rota para adicionar um novo cliente
 
 app.listen(PORT, () => {
- console.log(`Servidor na porta ${PORT}`);
+ console.log(`Servidor na porta http://localhost:${PORT}`);
 });
