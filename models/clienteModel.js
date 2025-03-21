@@ -3,7 +3,7 @@ const db = require ('../config/db'); // Importe a configuração do banco de dad
 const Cliente = {
  getAllClients: async () => {
   try {
-   const [rows] = await db.query('SELECT * FROM Cliente');
+   const [rows] = await db.query('SELECT * FROM cliente');
    return rows;
   } catch (error) {
    throw error;
