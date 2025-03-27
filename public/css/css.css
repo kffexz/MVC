@@ -65,3 +65,19 @@ input[type="submit"] {
 input[type="submit"]:hover {
  background-color: #2980b9;
 }
+
+#buton {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+   }
+   
+   
+   #buton:hover {
+    background-color: #2980b9;
+   }
