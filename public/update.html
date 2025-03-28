@@ -39,6 +39,32 @@
                 const nome = document.getElementById('nome').value;
                 const cpf = document.getElementById('cpf').value;
 
+                try {
+                    const response = await fetch(`/api/clientes/${id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-type': 'application/json'
+                        },
+                        body: JSON.stringify({ nome, cpf })
+                    })
+                    if (response.ok) {
+                        const message = document.getElementById('message')
+                        message.textContent = 'Cliente atualizado'
+                        message.style.color = 'green'
+
+                    }
+                    else {
+                        const errorData = response.json();
+                        const messageErro = document.getElementById('message')
+                        messageErro.textContent = `Erro: ${errorData.error}`;
+                        messageErro.style.color = 'red';
+                    }
+                } catch (error) {
+                    const erroCatch = document.getElementById('message')
+                    erroCatch.textContent = `Erro: ${error.message}`;
+                    erroCatch.style.color = 'red';
+                }
+
             })
     </script>
 

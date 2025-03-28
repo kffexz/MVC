@@ -19,23 +19,28 @@ const Cliente = {
         }
     },
 
-    updateCliente: async (id, nome, cpf) => {
+    updateClient: async (id, nome, cpf) => {
         try {
-            if (!id) {
-                throw new Error('ID do cliente é necessário');
-            }
-
-            const [result] = await db.execute('UPDATE cliente SET nome = ? , cpf = ? WHERE id = ? ', [id, nome, cpf]);
-
-            if (result.affectedRows === 0) {
-                throw new Error('Cliente não encontrado')
-            }
-
-            return { id, nome, cpf }
+          // Verifique se o ID é válido
+          if (!id) {
+            throw new Error('ID do cliente é necessário');
+          }
+    
+    
+          // Atualize o cliente no banco de dados
+          const [result] = await db.execute('UPDATE Cliente SET nome = ?, cpf = ? WHERE id = ?', [nome, cpf, id]);
+    
+    
+          // Verifique se algum registro foi alterado
+          if (result.affectedRows === 0) {
+            throw new Error('Cliente não encontrado');
+          }
+    
+    
+          return { id, nome, cpf };
         } catch (error) {
-            throw error;
-
+          throw error;
         }
-    }
+      }
 };
 module.exports = Cliente;
