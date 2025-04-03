@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/css.css">
+</head>
+
+<body>
+    <!-- ul>li{item $}*3 -->
+    <h1>Excluir Cliente</h1>
+
+    <label for="clienteId"> ID do cliente:</label>
+    <input type="text" id="clienteId" placeholder="Digite o ID do cliente">
+
+    <button id="deleteBtn">Excluir Cliente</button>
+    <p id="message"></p>
+</body>
+
+<script>
+    document.getElementById('deleteBtn')
+        .addEventListener('click', async (event) => {
+            event.preventDefault();
+
+            const clienteId = document.getElementById('clienteId').value;
+            const messageElement = document.getElementById('message').value;
+
+            if (!clienteId) {
+                messageElement.textContent = "Insira um ID";
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/clientes/${clienteId}`, {
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                if (response.ok) {
+                    messageElement.textContent = 'Cliente deletado';
+                }
+                else {
+                    const errorData = await response.json();
+                    messageElement.textContent = `Erro: ${errorData.error}`;
+
+                }
+
+            } catch (error) {
+                messageElement.textContent = 'Erro ao excluir cliente';
+                console.error('Erro: ', error);
+            }
+        })
+</script>
+
+</html>
