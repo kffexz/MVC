@@ -25,7 +25,7 @@
             event.preventDefault();
 
             const clienteId = document.getElementById('clienteId').value;
-            const messageElement = document.getElementById('message').value;
+            const messageElement = document.getElementById('message');
 
             if (!clienteId) {
                 messageElement.textContent = "Insira um ID";

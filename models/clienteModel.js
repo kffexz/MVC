@@ -12,7 +12,7 @@ const Cliente = {
 
   createNewClient: async (nome, cpf) => {
     try {
-      const [result] = await db.execute('INSERT INTO Cliente (nome, cpf) VALUES (?,?)', [nome, cpf]);
+      const [result] = await db.execute('INSERT INTO cliente (nome, cpf) VALUES (?,?)', [nome, cpf]);
       return { id: result.insertId, nome, cpf };
     } catch (error) {
       throw error;
@@ -28,12 +28,12 @@ const Cliente = {
 
 
       // Atualize o cliente no banco de dados
-      const [result] = await db.execute('UPDATE Cliente SET nome = ?, cpf = ? WHERE id = ?', [nome, cpf, id]);
+      const [result] = await db.execute('UPDATE cliente SET nome = ?, cpf = ? WHERE id = ?', [nome, cpf, id]);
 
 
       // Verifique se algum registro foi alterado
       if (result.affectedRows === 0) {
-        throw new Error('Cliente não encontrado');
+        throw new Error('cliente não encontrado');
       }
 
 
@@ -55,11 +55,11 @@ const Cliente = {
 
 
       // Verifique se algum registro foi alterado
-      if (result.affectedRows === 0) {
-        throw new Error('Cliente não encontrado');
+      if (result.affectedRows == 0) {
+        throw new Error('cliente não encontrado');
       }
 
-      return { message: 'Cliente deletado com sucesso!' };
+      return { message: 'cliente deletado com sucesso!' };
     } catch (error) {
       throw error;
     }

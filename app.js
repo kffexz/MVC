@@ -14,6 +14,12 @@ app.get('/update', () => {
     res.sendFile(path.join(__dirname, 'public', 'update.html'));
 });
 
+app.get('/delete', () => {
+    res.sendFile(path.join(__dirname, 'public', 'delete.html'));
+});
+
+
+app.delete('/api/clientes/:id', clienteController.deleteClient); // Rota para deletar o cliente
 app.put('/api/clientes/:id', clienteController.updateClient); // Rota para atualizar o cliente
 app.get('/api/clientes', clienteController.getAllClients); // Rota para obter todos os clientes
 app.post('/api/clientes', clienteController.createNewClient); //Rota para adicionar um novo cliente
