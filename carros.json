@@ -1,0 +1,34 @@
+[
+
+    {
+        "nome": "CARRO1",
+        "imagem": "img/carro1.jpg",
+        "marca": "marca1",
+        "ano": "1991"
+    },
+    {
+        "nome": "CARRO2",
+        "imagem": "img/carro2.jpg",
+        "marca": "marca2",
+        "ano": "1992"
+    },
+    {
+        "nome": "CARRO3",
+        "imagem": "img/carro3.jpg",
+        "marca": "marca3",
+        "ano": "1993"
+    },
+    {
+        "nome": "CARRO4",
+        "imagem": "img/carro4.jpg",
+        "marca": "marca4",
+        "ano": "1994"
+    },
+    {
+        "nome": "CARRO5",
+        "imagem": "img/carro5.jpg",
+        "marca": "marca5",
+        "ano": "1995"
+    }
+
+]

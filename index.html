@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query String</title>
+
+    <style>
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .card{
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 10px;
+            width: 200px;
+            text-align: center;
+            box-sizing: border-box;            
+        }
+        .card img{
+            max-width: 100%;
+            width: 150px;
+            height: 200px;
+            border-radius: 8px;            
+        }
+        .card h3{
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="carros-container"> 
+        
+    </div>
+    <script>
+
+        function carregar(){
+
+            fetch('carros.json')
+                .then(response => response.json())
+                .then(carros => {
+                    const container = document.getElementById('carros-container');
+
+                    carros.map(carro=>{
+                        const card = document.createElement("div");
+                        card.classList.add("card");
+
+                        const img = document.createElement("img");
+
+                        img.src = carro.imagem;
+                        img.alt = carro.nome;
+
+                        const titulo = document.createElement("h3");
+                        titulo.textContent = carro.nome;
+
+                        card.appendChild(img);
+                        card.appendChild(titulo);
+                        container.appendChild(card);
+
+                        card.addEventListener('click', ()=>{
+                            const url = `detalhes.html?nome=${encodeURIComponent(carro.nome)
+                            }&marca=${encodeURIComponent(carro.marca)
+                            }&ano=${encodeURIComponent(carro.ano)
+                            }&imagem=${encodeURIComponent(carro.imagem)}`
+                            
+                            window.location.href = url;
+                        })
+                    })
+                })
+            }
+
+        carregar()
+    </script>
+
+</body>
+</html>

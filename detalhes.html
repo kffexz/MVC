@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes</title>
+    <style>
+        .details{
+            margin-top: 20px;
+            padding: 16px;
+            border:1px solid #ccc;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .details img{
+            max-width: 100%;
+            width: 150px;
+            height: 200px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="details">
+        <h3>Detalhes do Carro</h3>
+        <img id="carro-img">
+        <p id="carro-nome"></p>
+        <p id="carro-marca"></p>
+        <p id="carro-ano"></p>
+    </div>
+    <script>
+        window.onload = function(){
+
+            const urlParams = new URLSearchParams(window.location.search);
+
+            const nome = urlParams.get('nome');
+            const marca = urlParams.get('marca');
+            const ano = urlParams.get('ano');
+            const imagem = urlParams.get('imagem');
+
+            document.getElementById('carro-img').src = imagem;
+            document.getElementById('carro-img').alt = imagem;
+            document.getElementById('carro-nome').textContent = `Nome ${nome}`;
+            document.getElementById('carro-marca').textContent = `Marca ${marca}`;
+            document.getElementById('carro-ano').textContent = `Ano ${ano}`; 
+        }
+    </script>
+</body>
+</html>
